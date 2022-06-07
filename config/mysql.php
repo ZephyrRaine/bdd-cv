@@ -1,7 +1,7 @@
 <?php
 
-const MYSQL_HOST = 'localhost';
-const MYSQL_PORT = 3307;
+const MYSQL_HOST = '10.96.16.17';
+const MYSQL_PORT = 3306;
 const MYSQL_NAME = 'we_love_food';
 const MYSQL_USER = 'root';
 const MYSQL_PASSWORD = 'root';
@@ -14,5 +14,5 @@ try {
     );
     $mysqlClient->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(Exception $exception) {
-    die('Erreur : '.$e->getMessage());
+    die('Erreur : '.$exception->getMessage());
 }
