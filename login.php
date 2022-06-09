@@ -26,7 +26,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-			if ($row['Email'] === $Email && $row['password'] === $password) {
+			if ($row['Email'] === $Email && $row['Password'] === $password) {
 				$_SESSION['id'] = $row['id'];
 				header("Location: home.php");
 				exit();
