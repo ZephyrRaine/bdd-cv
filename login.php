@@ -9,18 +9,18 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		$data = htmlspecialchars($data);
 		return $data;
 	}
-	$uname = ($_POST['uname']);	
-	$pass = ($_POST['password']);
+	$Email = ($_POST['Email']);	
+	$password = ($_POST['password']);
 
-	if (empty($uname)) {
-		header("Location: index.php?error=Username is required");
+	if (empty($Email)) {
+		header("Location: index.php?error=Email is required");
 		exit();
 	}else if(empty($pass)){
 		header("Location: index.php?error=Password is required");
 	exit();
 
 	}else{
-		$sql = "SELECT * FROM users WHERE user_name='$uname' AND password='$pass'";
+		$sql = "SELECT * FROM users WHERE user_name='$Email' AND password='$password'";
 
 		$result = mysqli_query($conn, $sql);
 
@@ -33,11 +33,11 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 				header("Location: home.php");
 				exit();
 			}else{
-				header("Location: index.php?error=Incorrect Username or Password");
+				header("Location: index.php?error=Incorrect Email or Password");
 				exit();
 			}	
 		}else{
-			header("Location: index.php?error=Incorrect Username or Password");
+			header("Location: index.php?error=Incorrect Email or Password");
 			exit();
 		}
 	}
