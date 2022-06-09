@@ -1,7 +1,7 @@
 <?php  
 session_start();
 
-$demarches = $mysqlClient->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
+$demarches = $conn->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
 
 $getData = $_GET; //nécessaire ou pas ???
 
