@@ -5,7 +5,7 @@ $port= 3308;
 $unmae= "root";
 $password = "";
 
-$db_name = "test_db";
+$db_name = "bdd-cv";
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name, $port);
 
