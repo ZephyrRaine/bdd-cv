@@ -1,10 +1,10 @@
 <?php
 
 const MYSQL_HOST = '10.96.16.17';
-const MYSQL_PORT = 3306;
-const MYSQL_NAME = 'we_love_food';
+const MYSQL_PORT = 3308;
+const MYSQL_NAME = 'bdd-cv';
 const MYSQL_USER = 'root';
-const MYSQL_PASSWORD = 'root';
+const MYSQL_PASSWORD = '';
 
 try {
     $mysqlClient = new PDO(
