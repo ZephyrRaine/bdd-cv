@@ -1,19 +1,33 @@
 <?php  
 session_start();
+include "db_conn.php";
+$requete = $conn->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
+$requete->execute();
 
-$demarches = $conn->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
+$demarches = $requete->fetchall();
+?>
 
-$getData = $_GET; //nécessaire ou pas ???
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démarches en cours</title>
+    <h1>Liste des démarches</h1>
 
-$demarche = [ //mais du coup si j'ai récupéré les démarches en ligne 4, est ce que j'ai besoin de ca ?
-    'Id' => $[0]['Id'],
-    'Date_contact' => $[0]['Date_contact'],
-    'Type_demarche' => $[0]['Type_demarche'],
-    'Etat' => $[0]['Etat'],
-    'Id_Contact' => $[0]['Id_Contact'],
-    'Id_Utilisateur' => $[0]['Id_Utilisateur'],
-];
-
-echo ($demarches)
+<?php
+//echo(implode(" ", $demarches[0]));
+echo("Id : " .$demarches[0]['Id']);
+echo nl2br("<br>");
+echo("Début de la démarche : " .$demarches[0]['Date_contact']);
+echo nl2br("<br>");
+echo("Type de démarche : " .$demarches[0]['Type_demarche']);
+echo nl2br("<br>");
+echo("Etat de la démarche : " .$demarches[0]['Etat']);
+echo nl2br("<br>");
+echo("Id du contact : " .$demarches[0]['Id_Contact']);
+echo nl2br("<br>");
+echo("Id de l'utilisateur : " .$demarches[0]['Id_Utilisateur']);
 
 ?>
