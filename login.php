@@ -1,68 +1,50 @@
-<?php
+<?php  
+session_start();
+include "db_conn.php";
 
-$postData = $_POST;
+if (isset($_POST['uname']) && isset($_POST['password'])) { 
+	function validate($data){
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+	$uname = ($_POST['uname']);	
+	$pass = ($_POST['password']);
 
-if (isset($postData['email']) &&  isset($postData['password'])) {
-    foreach ($users as $user) {
-        if (
-            $user['email'] === $postData['email'] &&
-            $user['password'] === $postData['password']
-        ) {
-            $loggedUser = [
-                'email' => $user['email'],
-            ];
+	if (empty($uname)) {
+		header("Location: index.php?error=Username is required");
+		exit();
+	}else if(empty($pass)){
+		header("Location: index.php?error=Password is required");
+	exit();
 
-            /**
-             * Cookie qui expire dans un an
-             */
-            setcookie(
-                'LOGGED_USER',
-                $loggedUser['email'],
-                [
-                    'expires' => time() + 365*24*3600,
-                    'secure' => true,
-                    'httponly' => true,
-                ]
-            );
+	}else{
+		$sql = "SELECT * FROM users WHERE user_name='$uname' AND password='$pass'";
 
-            $_SESSION['LOGGED_USER'] = $loggedUser['email'];
-        } else {
-            $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                $postData['email'],
-                $postData['password']
-            );
-        }
-    }
+		$result = mysqli_query($conn, $sql);
+
+		if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+			if ($row['user_name'] === $uname && $row['password'] === $pass) {
+				$_SESSION['user_name'] = $row['user_name'];
+				$_SESSION['name'] = $row['name'];
+				$_SESSION['id'] = $row['id'];
+				header("Location: home.php");
+				exit();
+			}else{
+				header("Location: index.php?error=Incorrect Username or Password");
+				exit();
+			}	
+		}else{
+			header("Location: index.php?error=Incorrect Username or Password");
+			exit();
+		}
+	}
+		
+
+
+}else{
+	header("Location: index.php");
+	exit();
 }
-
-// Si le cookie ou la session sont présentes
-if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER'])) {
-    $loggedUser = [
-        'email' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER'],
-    ];
-}
-?>
-
-<?php if(!isset($loggedUser)): ?>
-<form action="home.php" method="post">
-    <?php if(isset($errorMessage)) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo($errorMessage); ?>
-        </div>
-    <?php endif; ?>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
-        <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
-</form>
-<?php else: ?>
-    <div class="alert alert-success" role="alert">
-        Bonjour <?php echo($loggedUser['email']); ?> !
-    </div>
-<?php endif; ?>
