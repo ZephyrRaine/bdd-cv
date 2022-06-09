@@ -22,8 +22,10 @@ if (isset($_POST['Email']) && isset($_POST['password'])) {
 	}else{
 		$sql = "SELECT * FROM utilisateur WHERE Email='$Email' AND Password='$password'";
 
-		$result = mysqli_query($conn, $sql);
-
+		$request = $conn->prepare($sql);
+		$request->execute();
+		$result = $request->fetchAll();
+		
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result); 
 			if ($row['Email'] === $Email && $row['Password'] === $password) {
