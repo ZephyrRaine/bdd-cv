@@ -1,7 +1,7 @@
 <?php 
 
 $sname= "10.96.16.17";
-$port= 3308
+$port= 3308;
 $unmae= "root";
 $password = "";
 
