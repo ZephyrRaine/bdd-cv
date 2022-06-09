@@ -2,7 +2,7 @@
 
 $sname= "10.96.16.17";
 $unmae= "root";
-$password = "root";
+$password = "";
 
 $db_name = "test_db";
 
