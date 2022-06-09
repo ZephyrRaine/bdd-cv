@@ -2,7 +2,7 @@
 session_start();
 include "db_conn.php";
 
-if (isset($_POST['Email']) && isset($_POST['password'])) { 
+if (isset($_POST['uname']) && isset($_POST['password'])) { 
 	function validate($data){
 		$data = trim($data);
 		$data = stripslashes($data);
@@ -20,15 +20,13 @@ if (isset($_POST['Email']) && isset($_POST['password'])) {
 	exit();
 
 	}else{
-		$sql = "SELECT * FROM users WHERE Prenom='$Email' AND password='$password'";
+		$sql = "SELECT * FROM users WHERE user_name='$Email' AND password='$password'";
 
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-			if ($row['Prenom'] === $Email && $row['password'] === $password) {
-				$_SESSION['Prenom'] = $row['Prenom'];
-				$_SESSION['Nom'] = $row['Nom'];
+			if ($row['Email'] === $Email && $row['Password'] === $password) {
 				$_SESSION['id'] = $row['id'];
 				header("Location: home.php");
 				exit();
