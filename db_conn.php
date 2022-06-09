@@ -1,14 +1,18 @@
-<?php 
+<?php
 
-$sname= "10.96.16.17";
-$port= 3308;
-$unmae= "root";
-$password = "";
+const MYSQL_HOST = '10.96.16.17';
+const MYSQL_PORT = 3308;
+const MYSQL_NAME = 'bdd-cv';
+const MYSQL_USER = 'root';
+const MYSQL_PASSWORD = '';
 
-$db_name = "bdd-cv";
-
-$conn = mysqli_connect($sname, $unmae, $password, $db_name, $port);
-
-if (!$conn){
-	echo "Connection failed!";
+try {
+    $conn = new PDO(
+        sprintf('mysql:host=%s;dbname=%s;port=%s', MYSQL_HOST, MYSQL_NAME, MYSQL_PORT),
+        MYSQL_USER,
+        MYSQL_PASSWORD
+    );
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(Exception $exception) {
+    die('Erreur : '.$exception->getMessage());
 }
