@@ -36,7 +36,7 @@ if (isset($_POST['Email']) && isset($_POST['password'])) {
 				exit();
 			}	
 		}else{
-			header("Location: index.php?error=User not found");
+			header("Location: index.php?error=Incorrect Email or Password");
 			exit();
 		}
 	}
