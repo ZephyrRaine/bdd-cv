@@ -70,15 +70,18 @@ h1 {
 }
 
 a {
-	float: right;
-	background: #555;
-	padding: 10px 15px;
-	color: #fff;
-	border-radius: 5px;
+	float: left;
+	padding: 5px 15px;
+	color: #aaa;
 	margin-right: 10px;
+	margin-top: 7px;
 	border: none;
 	text-decoration: none;
 }
 a:hover{
 	opacity: .7;
+}
+
+img {
+	
 }
