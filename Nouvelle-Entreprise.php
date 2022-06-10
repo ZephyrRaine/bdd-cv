@@ -18,6 +18,10 @@ $insertRecipe->execute([
 'Adresse' => $Adresse,
 ]);
 
+	exit();
+	header("Location: liste_entreprise.php");
+	exit();
+
 ?>
 
 
