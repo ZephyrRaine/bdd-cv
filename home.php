@@ -18,8 +18,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['nom']))
 
 <?php 
 }else{
-	echo "C PAS BON";
-	exit();
 	header("Location: index.php");
 	exit();
 } ?>
