@@ -1,7 +1,8 @@
 <?php  
 session_start();
 include "db_conn.php";
-$requete = $conn->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
+$currentid = 1;
+$requete = $conn->prepare('SELECT demarche.Id, demarche.Date_contact, demarche.Type_demarche, demarche.Etat, demarche.Id_Contact, demarche.Id_Utilisateur, contact.Nom, contact.Tel, contact.Email FROM `demarche` INNER JOIN contact ON contact.Id = demarche.Id_Contact WHERE Id_Utilisateur = ' .$currentid); //je pense que y a besoin de ca 
 $requete->execute();
 
 $demarches = $requete->fetchall();
@@ -29,6 +30,9 @@ $nombredemarches=count($demarches);
         <th>Etat de la démarche</th>
         <th>Id du contact</th>
         <th>Id de l'utilisateur</th>
+        <th>Nom du contact</th>
+        <th>Tel du contact</th>
+        <th>Email du contact</th>
     </tr>
 
 <?php
@@ -36,12 +40,15 @@ for ($i = 0; $i < $nombredemarches; $i++) {
     $demarche = $demarches[$i];
     echo("<tr>");   
         //echo(implode(" ", $demarches[0]));
-        echo("<td>Démarche n°" .$demarche['Id'] ."</td>");
-        echo("<td>Début de la démarche : " .$demarche['Date_contact'] ."</td>");
-        echo("<td>Type de démarche : " .$demarche['Type_demarche'] ."</td>");
-        echo("<td>Etat de la démarche : " .$demarche['Etat'] ."</td>");
-        echo("<td>Id du contact : " .$demarche['Id_Contact'] ."</td>");
-        echo("<td>Id de l'utilisateur : " .$demarche['Id_Utilisateur'] ."</td>");
+        echo("<td>" .$demarche['Id'] ."</td>");
+        echo("<td>" .$demarche['Date_contact'] ."</td>");
+        echo("<td>" .$demarche['Type_demarche'] ."</td>");
+        echo("<td>" .$demarche['Etat'] ."</td>");
+        echo("<td>" .$demarche['Id_Contact'] ."</td>");
+        echo("<td>" .$demarche['Id_Utilisateur'] ."</td>");
+        echo("<td>" .$demarche['Nom'] ."</td>");
+        echo("<td>" .$demarche['Tel'] ."</td>");
+        echo("<td>" .$demarche['Email'] ."</td>");
     echo("</tr>");   
 }
 
