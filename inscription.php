@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" type="text/css" href="style.css">
 	<title>Formulaire</title>
 </head>
 <body>
@@ -26,15 +26,7 @@
   
   
 
-  <section>
-    <h2>Merci!</h2>
-    <br>
-    <h3>Votre compte a été créé avec succès.</h3><br>
-    <div>
-  <a href="index.php"><b>Cliquez ici pour vous connecter !</b></a>
-	</div>
 
-  </section>
 </main>
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
