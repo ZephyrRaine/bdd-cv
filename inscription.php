@@ -15,12 +15,12 @@
     </hgroup>
     
     <form method="post" action="inscription-page.php">
-      <input type="text" placeholder="Nom" required><br>
-      <input type="Prénom" placeholder="Prénom" required><br>
-      <input type="Adresse" placeholder="Adresse" required><br>
-      <input type="Téléphone" placeholder="Téléphone" required><br>
-      <input type="email" placeholder="Email" required><br>
-      <input type="password" placeholder="Mot de passe" required>
+      <input type="text" placeholder="Nom" name="Nom"><br>
+      <input type="text" placeholder="Prénom" name="Prenom"><br>
+      <input type="text" placeholder="Adresse" name="Adresse"><br>
+      <input type="text" placeholder="Téléphone" name="Tel"><br>
+      <input type="text" placeholder="Email" name="Email"><br>
+      <input type="text" placeholder="Mot de passe" name="Password">
     </form>
   
     <button>Créer un compte</button>

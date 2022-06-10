@@ -12,7 +12,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['nom']))
 </head>
 <body>
 	<h1>Hello, <?php echo $_SESSION['nom']; ?></h1>
-	<button href="logout.php">Logout</button>
+	<a href="logout.php">Logout</a>
 </body>
 </html>
 
