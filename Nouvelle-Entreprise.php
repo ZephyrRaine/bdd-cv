@@ -16,8 +16,9 @@ $insertRecipe->execute([
 'Nom' => $Nom,
 'Secteur' => $Secteur,
 'Adresse' => $Adresse,
+
 ]);
 
-?>
+>?
 
 
