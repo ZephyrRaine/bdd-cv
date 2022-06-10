@@ -15,19 +15,35 @@ $demarches = $requete->fetchall();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Démarches en cours</title>
     <h1>Liste des démarches</h1>
-
 <?php
-//echo(implode(" ", $demarches[0]));
-echo("Id : " .$demarches[0]['Id']);
-echo nl2br("<br>");
-echo("Début de la démarche : " .$demarches[0]['Date_contact']);
-echo nl2br("<br>");
-echo("Type de démarche : " .$demarches[0]['Type_demarche']);
-echo nl2br("<br>");
-echo("Etat de la démarche : " .$demarches[0]['Etat']);
-echo nl2br("<br>");
-echo("Id du contact : " .$demarches[0]['Id_Contact']);
-echo nl2br("<br>");
-echo("Id de l'utilisateur : " .$demarches[0]['Id_Utilisateur']);
+
+$nombredemarches=count($demarches);
 
 ?>
+
+<table style="width: 100%">
+    <tr>
+        <th>Démarche</th>
+        <th>Début de la démarche</th>
+        <th>Type de démarche</th>
+        <th>Etat de la démarche</th>
+        <th>Id du contact</th>
+        <th>Id de l'utilisateur</th>
+    </tr>
+
+<?php
+for ($i = 0; $i < $nombredemarches; $i++) {
+    $demarche = $demarches[$i];
+    echo("<tr>");   
+        //echo(implode(" ", $demarches[0]));
+        echo("<td>Démarche n°" .$demarche['Id'] ."</td>");
+        echo("<td>Début de la démarche : " .$demarche['Date_contact'] ."</td>");
+        echo("<td>Type de démarche : " .$demarche['Type_demarche'] ."</td>");
+        echo("<td>Etat de la démarche : " .$demarche['Etat'] ."</td>");
+        echo("<td>Id du contact : " .$demarche['Id_Contact'] ."</td>");
+        echo("<td>Id de l'utilisateur : " .$demarche['Id_Utilisateur'] ."</td>");
+    echo("</tr>");   
+}
+
+?>
+</table>
