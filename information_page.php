@@ -1,7 +1,5 @@
 <?php  
 include "db_conn.php";
-
-
 $email = $_POST['Email'];
 $prenom = $_POST['Prenom'];
 $nom = $_POST['Nom'];
@@ -11,7 +9,7 @@ $password = $_POST['Password'];
 $statut = $_POST['Statut'];
 $photo = $_POST['Photo'];
 $experience = $_POST['Experience'];
-$idnice = 9;
+$idnice = $_SESSION['id'];
 
 // Ecriture de la requête
 $sqlQuery = 'UPDATE utilisateur SET Nom=:Nom, Prenom=:Prenom, Adresse=:Adresse, Tel=:Tel, Email=:Email, Password=:Password, Statut=:Statut, Photo=:Photo, Experience=:Experience WHERE Id=:Id';
