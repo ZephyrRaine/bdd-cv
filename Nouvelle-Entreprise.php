@@ -16,9 +16,12 @@ $insertRecipe->execute([
 'Nom' => $Nom,
 'Secteur' => $Secteur,
 'Adresse' => $Adresse,
-
 ]);
 
->?
+	exit();
+	header("Location: liste_entreprise.php");
+	exit();
+
+?>
 
 
