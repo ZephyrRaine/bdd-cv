@@ -39,7 +39,7 @@ for ($i = 0; $i < $nombre_entreprises; $i++) {
         echo("<td>Nom de l'entreprise: " .$entreprise['Nom'] ."</td>");
         echo("<td>Secteur de l'entreprise: " .$entreprise['Secteur'] ."</td>");
         echo("<td>Adresse de l'entreprise: " .$entreprise['Adresse'] ."</td>");
-        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/Nepage.php?id=".$entreprise['Id']."\";'/></td>");
+        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/modifne.php?id=".$entreprise['Id']."\";'/></td>");
     echo("</tr>");   
 }
 
