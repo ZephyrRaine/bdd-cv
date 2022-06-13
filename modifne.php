@@ -1,5 +1,6 @@
 
 <?php  
+session_start();
 include "db_conn.php";
 
 $Id = $_GET["Id"];
