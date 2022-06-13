@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['Nom']))
+if (isset($_SESSION['id']) && isset($_SESSION['nom']))
 {
  ?>
 <!DOCTYPE html>
@@ -12,7 +12,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['Nom']))
 </head>
 <body>
 	<h1>Hello, <?php echo $_SESSION['nom']; ?></h1>
-	<a href="logout.php">Logout</a>
+	<a href="demarches_en_cours.php">Démarche en cours</a>
+	<a href="Nepage.php">Nouvelle Entreprise</a><br><br>
+	<a href="index.php">Logout</a>
 </body>
 </html>
 

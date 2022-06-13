@@ -16,6 +16,8 @@
         <label>Password</label>  
         <input type="password" name="password" placeholder="Password"> <br>  
         <button type="Envoyer">Connexion</button>
+        <a href="inscription.php">Vous n'êtes pas encore inscrit ?</a>
+        
     </form>
 
    

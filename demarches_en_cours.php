@@ -1,7 +1,8 @@
 <?php  
 session_start();
 include "db_conn.php";
-$requete = $conn->prepare('SELECT * FROM demarche'); //je pense que y a besoin de ca 
+$currentid = 1;
+$requete = $conn->prepare('SELECT demarche.Id, demarche.Date_contact, demarche.Type_demarche, demarche.Etat, demarche.Id_Contact, demarche.Id_Utilisateur, contact.Nom, contact.Tel, contact.Email FROM `demarche` INNER JOIN contact ON contact.Id = demarche.Id_Contact WHERE Id_Utilisateur = ' .$currentid); //je pense que y a besoin de ca 
 $requete->execute();
 
 $demarches = $requete->fetchall();
@@ -15,19 +16,41 @@ $demarches = $requete->fetchall();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Démarches en cours</title>
     <h1>Liste des démarches</h1>
-
 <?php
-//echo(implode(" ", $demarches[0]));
-echo("Id : " .$demarches[0]['Id']);
-echo nl2br("<br>");
-echo("Début de la démarche : " .$demarches[0]['Date_contact']);
-echo nl2br("<br>");
-echo("Type de démarche : " .$demarches[0]['Type_demarche']);
-echo nl2br("<br>");
-echo("Etat de la démarche : " .$demarches[0]['Etat']);
-echo nl2br("<br>");
-echo("Id du contact : " .$demarches[0]['Id_Contact']);
-echo nl2br("<br>");
-echo("Id de l'utilisateur : " .$demarches[0]['Id_Utilisateur']);
+
+$nombredemarches=count($demarches);
 
 ?>
+
+<table style="width: 100%">
+    <tr>
+        <th>Démarche</th>
+        <th>Début de la démarche</th>
+        <th>Type de démarche</th>
+        <th>Etat de la démarche</th>
+        <th>Id du contact</th>
+        <th>Id de l'utilisateur</th>
+        <th>Nom du contact</th>
+        <th>Tel du contact</th>
+        <th>Email du contact</th>
+    </tr>
+
+<?php
+for ($i = 0; $i < $nombredemarches; $i++) {
+    $demarche = $demarches[$i];
+    echo("<tr>");   
+        //echo(implode(" ", $demarches[0]));
+        echo("<td>" .$demarche['Id'] ."</td>");
+        echo("<td>" .$demarche['Date_contact'] ."</td>");
+        echo("<td>" .$demarche['Type_demarche'] ."</td>");
+        echo("<td>" .$demarche['Etat'] ."</td>");
+        echo("<td>" .$demarche['Id_Contact'] ."</td>");
+        echo("<td>" .$demarche['Id_Utilisateur'] ."</td>");
+        echo("<td>" .$demarche['Nom'] ."</td>");
+        echo("<td>" .$demarche['Tel'] ."</td>");
+        echo("<td>" .$demarche['Email'] ."</td>");
+    echo("</tr>");   
+}
+
+?>
+</table>
