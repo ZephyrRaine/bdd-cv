@@ -24,7 +24,7 @@ $nombre_entreprises=count($entreprises);
 
 <table style="width: 100%">
     <tr>
-    	<th>Nombres d'entreprises</th>
+    	<th>Nombres d'entreprises</th> 
         <th>Entreprise</th>
         <th>Secteur</th>
         <th>Adresse</th>
@@ -36,10 +36,11 @@ for ($i = 0; $i < $nombre_entreprises; $i++) {
 
     echo("<tr>");   
        
-        echo("<td>Entreprises n°" .$entreprise['Id'] ."</td>");
+        echo("<td>Entreprises n°" .$entreprise['Id'] ."</td>"); 
         echo("<td>Nom de l'entreprise: " .$entreprise['Nom'] ."</td>");
         echo("<td>Secteur de l'entreprise: " .$entreprise['Secteur'] ."</td>");
         echo("<td>Adresse de l'entreprise: " .$entreprise['Adresse'] ."</td>");
+        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/Nepage.php?id=".$entreprise['Id']."\";'/></td>");
         echo("<td><input type=button value='Supprimer' onclick='del(".$entreprise['Id'].");'/></td>");
     echo("</tr>");   
 }
