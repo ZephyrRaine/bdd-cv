@@ -7,7 +7,7 @@
       <title>mes info</title>
 </head>
 <body>
-      <form method="post" action="inscription_page.php">
+      <form method="post" action="information_page.php">
 
 <?php  
 include "db_conn.php";
@@ -29,12 +29,11 @@ echo('<input type="text" id="Statut" name="Statut" value= '.$utilisateur['Statut
 echo('<input type="text" id="Photo" name="Photo" value= '.$utilisateur['Photo'].'>');
 echo('<input type="text" id="Experience" name="Experience" value= '.$utilisateur['Experience'].'>');
 
-
       ?>
-  
+   <input type="submit" value="Valider les changements"/>
       </form>
 
-        <input type="submit" value="Valider les changements"/>
+        
 
   </body>
 </html>
