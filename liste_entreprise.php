@@ -33,13 +33,15 @@ $nombre_entreprises=count($entreprises);
     <?php
 for ($i = 0; $i < $nombre_entreprises; $i++) {
     $entreprise = $entreprises[$i];
+
     echo("<tr>");   
        
         echo("<td>Entreprises n°" .$entreprise['Id'] ."</td>"); 
         echo("<td>Nom de l'entreprise: " .$entreprise['Nom'] ."</td>");
         echo("<td>Secteur de l'entreprise: " .$entreprise['Secteur'] ."</td>");
         echo("<td>Adresse de l'entreprise: " .$entreprise['Adresse'] ."</td>");
-        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/modifne.php?id=".$entreprise['Id']."\";'/></td>");
+        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/Nepage.php?id=".$entreprise['Id']."\";'/></td>");
+        echo("<td><input type=button value='Supprimer' onclick='del(".$entreprise['Id'].");'/></td>");
     echo("</tr>");   
 }
 
@@ -47,3 +49,11 @@ for ($i = 0; $i < $nombre_entreprises; $i++) {
 </table>
 
 <input type=button onclick=window.location.href='http://localhost/Nepage.php'; value="Nouvelle entreprise"  />
+<script>
+    function del(id)
+    {
+        if (confirm("Confirmez la suppression") == true) {
+            window.location.href="http://localhost/DeleteEntreprise.php?id="+id;
+        }
+    }
+</script>
