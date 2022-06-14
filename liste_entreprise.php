@@ -1,5 +1,5 @@
 <?php  
-session_start();
+
 include "db_conn.php";
 $requete = $conn->prepare('SELECT * FROM entreprise'); //je pense que y a besoin de ca 
 $requete->execute();

@@ -18,11 +18,10 @@ $requete->execute();
 $utilisateur = $requete->fetchall()[0];
 
 
-
 echo('<input type="text" name="Nom"  id="Nom" value= '.$utilisateur['Nom'].'>');
 echo('<input type="text" id="Adresse" name="Adresse" value= '.$utilisateur['Adresse'].'>');
 echo('<input type="text" id="Secteur" name="Secteur" value= '.$utilisateur['Secteur'].'>');
-echo('<input type="hidden" name="id" value="id" />')
+echo('<input type="hidden" name="Id" value='.$utilisateur['Id'].'>');
 
 
       ?><input type="hidden" name="pseudo" value="Mateo21" />

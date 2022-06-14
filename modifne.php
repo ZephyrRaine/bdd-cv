@@ -1,9 +1,10 @@
 
 <?php  
-session_start();
+
 include "db_conn.php";
 
-$Id = $_GET["Id"];
+
+$Id = $_POST['Id'];
 $Nom = $_POST['Nom'];
 $Secteur = $_POST['Secteur'];
 $Adresse = $_POST['Adresse'];
@@ -16,5 +17,8 @@ $insertEntrepriseStatement->execute([
 'Adresse' => $Adresse,
 'Id' => $Id,
 ]);
+
+header("Location: liste_entreprise.php");
+	exit();
 
 ?>
