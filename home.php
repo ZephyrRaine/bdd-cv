@@ -13,7 +13,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['nom']))
 <body>
 	<h1>Hello, <?php echo $_SESSION['nom']; ?></h1>
 	<a href="demarches_en_cours.php">Démarche en cours</a>
+	<a href="information.php">Mes informations</a>
 	<a href="Nepage.php">Nouvelle Entreprise</a><br><br>
+
 	<a href="index.php">Logout</a>
 </body>
 </html>

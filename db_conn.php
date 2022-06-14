@@ -16,3 +16,4 @@ try {
 } catch(Exception $exception) {
     die('Erreur : '.$exception->getMessage());
 }
+session_start();

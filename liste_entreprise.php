@@ -1,5 +1,5 @@
 <?php  
-session_start();
+
 include "db_conn.php";
 $requete = $conn->prepare('SELECT * FROM entreprise'); //je pense que y a besoin de ca 
 $requete->execute();
@@ -40,7 +40,7 @@ for ($i = 0; $i < $nombre_entreprises; $i++) {
         echo("<td>Nom de l'entreprise: " .$entreprise['Nom'] ."</td>");
         echo("<td>Secteur de l'entreprise: " .$entreprise['Secteur'] ."</td>");
         echo("<td>Adresse de l'entreprise: " .$entreprise['Adresse'] ."</td>");
-        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/Nepage.php?id=".$entreprise['Id']."\";'/></td>");
+        echo("<td><input value='Modifier' type=button onclick='window.location.href=\"http://localhost/Modif.php?Id=".$entreprise['Id']."\";'/></td>");
         echo("<td><input type=button value='Supprimer' onclick='del(".$entreprise['Id'].");'/></td>");
     echo("</tr>");   
 }
